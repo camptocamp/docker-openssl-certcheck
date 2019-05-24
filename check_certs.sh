@@ -9,6 +9,8 @@ HTTP/1.0 200
 Content-Type: text/plain
 Connection: close
 
+# TYPE openssl_x509_notbefore_timestamp_seconds gauge
+# TYPE openssl_x509_notafter_timestamp_seconds gauge
 EOF
 
 for cert in "$1"/*.pem; do
@@ -35,7 +37,7 @@ for cert in "$1"/*.pem; do
 
   TAGS="${TAGS}certfile=\"${cert}\""
 
-  echo "openssl_x509_notbefore{$TAGS} $NOTBEFORE"
-  echo "openssl_x509_notafter{$TAGS} $NOTAFTER"
+  echo "openssl_x509_notbefore_timestamp_seconds{$TAGS} $NOTBEFORE"
+  echo "openssl_x509_notafter_timestamp_seconds{$TAGS} $NOTAFTER"
 
 done
