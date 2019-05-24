@@ -13,4 +13,4 @@ VOLUME /certs
 
 EXPOSE 9100
 
-ENTRYPOINT socat -T 1 -d -d tcp-l:9100,reuseaddr,fork,crlf system:"/check_certs.sh /certs"
+ENTRYPOINT socat -T 1 -d -d tcp-l:9100,reuseaddr,fork system:"/check_certs.sh /certs"
